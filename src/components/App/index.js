@@ -7,21 +7,17 @@ import React from 'react';
  * Imports locaux
  */
 // Composants React
-import VoteWidget from 'src/components/VoteWidget';
-import TestingHooks from 'src/components/TestingHooks';
+import Home from 'src/components/Home';
 // Données
 // Styles et assets
-import './app.sass';
+// import './app.sass';
 
 /**
  * Code
  */
-const App = ({ promo }) => {
+const App = () => {
   return <div id="app">
-    <h1 id="app-title">Modèle React</h1>
-    <p id="app-content"><em>Salut</em> {promo} !</p>
-    <VoteWidget />
-    <TestingHooks />
+    <Home />
   </div>;
 }
 
