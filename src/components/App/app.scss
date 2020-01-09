@@ -1,0 +1,35 @@
+/**
+ * Import
+ */
+ @import 'src/styles/vars';
+
+ #app {
+     background-color: black;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     min-height: 100%;
+ }
+ 
+ html {
+    //  height: 100%;
+    //  body {
+    //      min-height: 100%;
+    //  }
+ }
+ 
+ #root {
+     min-height: 100vh !important;
+ }
+ 
+ #app {
+     min-height: 100vh;
+ }
+ 
+ body {
+  font-family: 'Gayathri', sans-serif;
+  // background-image: url("../../data/Castellas.jpg");
+  // background-position-y: 70px;
+  // background-size: cover;
+  // background-attachment: fixed;
+}
