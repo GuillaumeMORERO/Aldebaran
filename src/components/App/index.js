@@ -7,17 +7,17 @@ import React from 'react';
  * Imports locaux
  */
 // Composants React
-import Home from 'src/components/Home';
+import Header from 'src/components/Header';
 // Données
 // Styles et assets
-// import './app.sass';
+import './app.scss';
 
 /**
  * Code
  */
 const App = () => {
   return <div id="app">
-    <Home />
+    <Header />
   </div>;
 }
 
