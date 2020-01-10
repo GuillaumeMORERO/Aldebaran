@@ -4,7 +4,7 @@
  @import 'src/styles/vars';
 
  #app {
-     background-color: black;
+    //  background-color: black;
      display: flex;
      flex-direction: column;
      width: 100%;
@@ -28,4 +28,7 @@
  
  body {
   font-family: 'Gayathri', sans-serif;
+  background-image: url(../../data/metalik.jpg);
+  background-attachment: fixed;
+  backdrop-filter: blur(1px) grayscale(80%) brightness(10%);
 }

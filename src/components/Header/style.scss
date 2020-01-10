@@ -4,6 +4,15 @@
   flex-wrap: wrap;
   width: 80%;
 
+  &-image {
+    display: flex;
+    justify-content: center;
+    &_logo {
+      width: 50%;
+
+    }
+  }
+
   &-barre {
     width: 100%;
     justify-content: space-around;
