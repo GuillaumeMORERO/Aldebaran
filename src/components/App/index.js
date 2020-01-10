@@ -2,12 +2,21 @@
  * Imports de dépendances
  */
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 /**
  * Imports locaux
  */
 // Composants React
 import Header from 'src/components/Header';
+import Concerts from 'src/components/Concerts';
+import Media from 'src/components/Media';
+import Contact from 'src/components/Contact';
+import Home from 'src/components/Home';
 // Données
 // Styles et assets
 import './app.scss';
@@ -16,9 +25,25 @@ import './app.scss';
  * Code
  */
 const App = () => {
-  return <div id="app">
-    <Header />
-  </div>;
+  return (<Router>
+    <div id="app">
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/concerts">
+          <Concerts />
+        </Route>
+        <Route exact path="/medias">
+          <Media />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>
+      </Switch>
+    </div>;
+  </Router>);
 }
 
 /**
