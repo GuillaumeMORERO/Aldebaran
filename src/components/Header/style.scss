@@ -39,3 +39,23 @@
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    &-barre {
+      &_lien {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .header {
+    width: 100%;
+    &-barre {
+      &_lien {
+        font-size: 1em;
+      }
+    }
+  }
+}
