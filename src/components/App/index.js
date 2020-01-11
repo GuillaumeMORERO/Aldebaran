@@ -17,6 +17,7 @@ import Concerts from 'src/components/Concerts';
 import Media from 'src/components/Media';
 import Contact from 'src/components/Contact';
 import Home from 'src/components/Home';
+import Footer from 'src/components/Footer';
 // Données
 // Styles et assets
 import './app.scss';
@@ -42,6 +43,7 @@ const App = () => {
           <Contact />
         </Route>
       </Switch>
+      <Footer />
     </div>;
   </Router>);
 }
