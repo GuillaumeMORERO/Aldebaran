@@ -13,7 +13,7 @@ export default () => {
 
     <Navbar expand="lg" variant="dark" bg="none" className="footer-barre">
       <Navbar.Brand href="/projects" className="footer-barre_lien">Autres projets</Navbar.Brand>
-      <Navbar.Brand href="/weAre" className="footerr-barre_lien">Qui sommes nous ?</Navbar.Brand>
+      <Navbar.Brand href="/weAre" className="footer-barre_lien">Qui sommes nous ?</Navbar.Brand>
       <Navbar.Brand href="/contact" className="footer-barre_lien">Contact</Navbar.Brand>
     </Navbar>
 
