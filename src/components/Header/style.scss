@@ -20,6 +20,18 @@
     padding-bottom: 2em;
     border-bottom: solid 1px rgba(85, 31, 31, 0.4);
 
+    &_dp {
+      border: none;
+
+      &-tog {
+        border: none;
+      }
+
+      &-it {
+        border: none;
+      }
+    }
+
     &_lien {
       color: white;
       font-family: 'Metal Mania', cursive;
