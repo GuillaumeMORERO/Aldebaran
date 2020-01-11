@@ -3,19 +3,22 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 80%;
-
+  
   &-image {
     display: flex;
     justify-content: center;
     &_logo {
       width: 80%;
-
+      
     }
   }
-
+  
   &-barre {
     width: 100%;
     justify-content: space-around;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    border-bottom: solid 1px rgba(85, 31, 31, 0.4);
 
     &_lien {
       color: white;
@@ -44,6 +47,7 @@
   .header {
     width: 100%;
     &-barre {
+      
       &_lien {
       }
     }
@@ -54,6 +58,7 @@
   .header {
     width: 100%;
     &-barre {
+      padding-bottom: 1em;
       &_lien {
         font-size: 1em;
       }
