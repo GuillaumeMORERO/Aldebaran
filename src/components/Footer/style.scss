@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 50%;
+  border: solid 1px #f0f;
+  background-image: url("/src/data/pierre.jpg");
+
+  &-barre {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+  }
+}
