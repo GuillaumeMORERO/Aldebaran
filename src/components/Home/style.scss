@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  width: 75%;
+  margin: 5em 0 5em 0;
+
+  &-pic {
+    width: 75%;
+    align-self: center;
+    margin-bottom: 5em;
+  }
+}
