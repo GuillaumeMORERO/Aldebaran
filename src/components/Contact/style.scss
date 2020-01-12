@@ -1,0 +1,26 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+
+  &-disclaimer {
+    padding: 1.2em 2em;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    background-color: rgba(255, 0, 0, 0.2);
+    align-self: center;
+    text-align: center;
+
+    &_txt {
+      margin-bottom: .5em;
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .contact {
+    font-size: .8em;
+  }
+}
