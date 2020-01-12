@@ -14,11 +14,14 @@
     &_lien {
       font-size: .8em;
       margin-top: 5px;
+      &-icon {
+        font-size: 1.2em;
+      }
     }
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 768px) {
   .footer {
     width: 80%;
 
@@ -26,6 +29,9 @@
       flex-wrap: nowrap;
       &_lien {
         font-size: .5em;
+        &-icon {
+          font-size: .8em;
+        }
       }
     }
   }
