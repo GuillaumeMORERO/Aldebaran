@@ -19,6 +19,39 @@
   }
 }
 
+.form {
+  &-check {
+    margin-bottom: .3em;
+  }
+}
+
+.btn {
+  // font-family: 'Metal Mania', cursive;
+  // font-size: 1.2em;
+  // background-color: none;
+  border: 0 !important;
+  // box-shadow: none;
+  
+}
+
+.bouton {
+  font-family: 'Metal Mania', cursive;
+  font-size: 2em;
+  color: white;
+  background-color: transparent;
+  border: 0 !important;
+  box-shadow: none;
+  &:hover {
+    color: white;
+    transition: .3s;
+    transform: scale(1.1);
+  }
+  &:not(:hover) {
+    transition: .2s;
+  }
+  
+}
+
 @media only screen and (max-width: 425px) {
   .contact {
     font-size: .8em;

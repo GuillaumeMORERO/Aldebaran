@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import './style.scss';
 
 export default () => {
@@ -63,7 +65,7 @@ export default () => {
 
       <Form.Group as={Row}>
         <Col sm={{ span: 10, offset: 2 }}>
-          <Button type="submit">Envoyer</Button>
+          <Button variant="none" type="submit" className="bouton">Envoyer</Button>
         </Col>
       </Form.Group>
     </Form>
