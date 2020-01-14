@@ -1,12 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Container, Form, Row, Col, Button, InputGroup, FormControl } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import './style.scss';
 
+import {
+  changeEmail,
+  changeMessage
+} from 'src/store/Visiteur/actions';
+
 export default () => {
+
+  const dispatch = useDispatch(); // Dispatch Hooks
+
+  const {
+    // mettre les states du reducer de state.visiteur
+    emailValue
+  } = useSelector((state) => state.visiteur); // Show state from store
+
+  const [isEmailOk, setIsEmailOk] = useState(false);
+  const [isEmailVerifOk, setIsEmailVerifOk] = useState(false);
+
+  const handleChange = (e, inputValue) => {// Function that save input change in store
+    if (inputValue === 'email') {
+      if (e.target.value.length === 0) {
+        setIsEmailOk(false);
+      }
+      else {
+        setIsEmailOk(true);
+        dispatch(changeEmail(e.target.value));
+      }
+    }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (isEmailOk) {
+      if (isMessageOk) {
+        dispatch(login()
+        // login est une action !!
+        );
+      }
+    }
+  };
+
   return <Container className="contact">
 
     <div className="contact-disclaimer">
@@ -19,7 +58,14 @@ export default () => {
 
       <div className="contact-zone_elm">
         <label className="contact-zone_elm-lab">Email</label>
-        <input className="contact-zone_elm-area" type="email" name="email" placeholder="Entrez votre Email"/>
+        <input
+        className="contact-zone_elm-area"
+        type="email"
+        name="email"
+        placeholder="Entrez votre Email"
+        value={emailValue}
+        onChange={(e) => handleChange(e, 'email')}
+        />
       </div>
 
       <div className="contact-zone_elm">
@@ -28,6 +74,8 @@ export default () => {
           className="contact-zone_elm-area"
           name="message"
           placeholder="Ecrivez votre message - 200 caractères max"
+          rows="10"
+          maxLength="200"
           >
         </textarea>
       </div>
@@ -44,5 +92,3 @@ export default () => {
   </Container>
 
 };
-
-// Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore assumenda dolorem atque, dolor optio consectetur odio sint? Modi ipsam molestiae recusandae accusamus blanditiis, rerum et facilis impedit, quo est expedita. Voluptatibus quidem perspiciatis numquam odit debitis, atque quaerat assumenda beatae quas consequuntur placeat aliquid modi fugiat quam iste excepturi odio aspernatur, laudantium explicabo asperiores ea. Corporis molestiae sit adipisci amet laborum provident beatae alias minus qui eius quas cum illo itaque laboriosam earum, dolorum veritatis libero, nihil voluptate velit esse reprehenderit! Laudantium hic ab corporis nisi dignissimos esse eligendi perferendis cumque reiciendis vero nam magnam quae minima deleniti, nihil ipsa repellat non pariatur placeat et! Autem quibusdam excepturi adipisci sapiente fugiat nostrum sit placeat, rem architecto ut consectetur voluptate magni similique odio aspernatur praesentium delectus quidem iure esse labore ea consequuntur odit. Natus deleniti debitis voluptatem culpa modi? Veniam facere magnam velit obcaecati. Sint illum doloribus rem dicta sapiente deserunt, fugiat sed dignissimos facilis ex. A, voluptatibus doloribus saepe, omnis ab non illo nobis adipisci sint unde debitis impedit nam. Tempore magnam illo quidem nihil sit dolorem ullam, placeat ut dolores maiores deleniti vero vitae fuga mollitia ipsam ab fugit aut voluptatibus optio praesentium. Commodi consectetur repellat neque ut laudantium.
