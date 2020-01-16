@@ -25,6 +25,7 @@ export default () => {
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
+      // verification à faire avec email-valdator ?
       if (e.target.value.length === 0) {
         setIsEmailOk(false);
       }
