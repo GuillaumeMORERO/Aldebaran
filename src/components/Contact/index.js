@@ -19,11 +19,12 @@ export default () => {
 
   const {
     // mettre les states du reducer de state.visiteur
-    emailValue
+    emailValue,
+    messageValue
   } = useSelector((state) => state.visiteur); // Show state from store
 
   const [isEmailOk, setIsEmailOk] = useState(false);
-  const [isEmailVerifOk, setIsEmailVerifOk] = useState(false);
+  const [isMessageOk, setIsMessageOk] = useState(false);
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
@@ -35,22 +36,36 @@ export default () => {
       if (mailChecked) {
         setIsEmailOk(true);
         console.log( 'mail vérifié', mailChecked)
-        console.log(isEmailOk)
-      }
-      else {
+        console.log( 'isEmailOk', isEmailOk)
+      } else {
         console.log( 'mail non vérifié', mailChecked)
+        // mettre un message d'erreur
+      }
+    }
+
+    if (inputValue === 'message') {
+      const messageToCheck = e.target.value;
+      dispatch(changeMessage(messageToCheck));
+      console.log(messageToCheck);
+      if (messageToCheck.length > 500) {
+        setIsMessageOk(false);
+        console.log('troooop loooong!!')
+      } else {
+        setIsMessageOk(true);
+        console.log('message ok');
       }
     }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (isEmailOk) {
-      if (isMessageOk) {
-        dispatch(login()
-        // login est une action !!
-        );
-      }
+    if (isEmailOk && isMessageOk) {
+      console.log('c\'est parti pour un concert !!');
+      // dispatch(login()
+      // login est une action !!
+      //);
+    } else {
+      console.log('putain d\'échec...')
     }
   };
 
@@ -83,7 +98,8 @@ export default () => {
           name="message"
           placeholder="Ecrivez votre message - 200 caractères max"
           rows="10"
-          maxLength="200"
+          value={messageValue}
+          onChange={(e) => handleChange(e, 'message')}
           >
         </textarea>
       </div>
@@ -91,7 +107,9 @@ export default () => {
       <div className="contact-zone_elm">
         <button
           className="contact-zone_elm-bouton"
-          type="button">
+          type="button"
+          onClick={onSubmit}
+          >
           Envoyez !
         </button>
       </div>
