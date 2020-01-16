@@ -4,6 +4,8 @@ import { Container, Form } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import * as EmailValidator from 'email-validator';
+
 import './style.scss';
 
 import {
@@ -25,13 +27,18 @@ export default () => {
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
-      // verification à faire avec email-valdator ?
-      if (e.target.value.length === 0) {
-        setIsEmailOk(false);
+
+      const mailToCheck = e.target.value;
+      dispatch(changeEmail(mailToCheck));
+      const mailChecked = EmailValidator.validate(mailToCheck);
+
+      if (mailChecked) {
+        setIsEmailOk(true);
+        console.log( 'mail vérifié', mailChecked)
+        console.log(isEmailOk)
       }
       else {
-        setIsEmailOk(true);
-        dispatch(changeEmail(e.target.value));
+        console.log( 'mail non vérifié', mailChecked)
       }
     }
   };
@@ -60,12 +67,12 @@ export default () => {
       <div className="contact-zone_elm">
         <label className="contact-zone_elm-lab">Email</label>
         <input
-        className="contact-zone_elm-area"
-        type="email"
-        name="email"
-        placeholder="Entrez votre Email"
-        value={emailValue}
-        onChange={(e) => handleChange(e, 'email')}
+          className="contact-zone_elm-area"
+          type="email"
+          name="email"
+          placeholder="Entrez votre Email"
+          value={emailValue}
+          onChange={(e) => handleChange(e, 'email')}
         />
       </div>
 
