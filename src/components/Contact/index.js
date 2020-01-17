@@ -44,7 +44,7 @@ export default () => {
         setIsEmailOk(true);
         setMailErr('');
       } else {
-        setMailErr('Email non valide, te fous pas de ma gueule !!');
+        setMailErr('Email non valide');
       }
     }
 
@@ -54,13 +54,11 @@ export default () => {
       dispatch(changeMessage(messageToCheck));
 
       let rest = remainingCharacter(messageLength);
-      console.log( 'dans le onChange', rest);
       setUncount(rest);
-      console.log( 'uncount', uncount);
 
       if (messageLength > 500) {
         setIsMessageOk(false);
-        setMessageErr('Message trop long, ferme ta gueule...');
+        setMessageErr('Message trop long');
       } else {
         setIsMessageOk(true);
         setMessageErr('');
