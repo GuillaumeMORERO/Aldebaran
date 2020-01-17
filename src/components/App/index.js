@@ -17,6 +17,7 @@ import Concerts from 'src/components/Concerts';
 import Media from 'src/components/Media';
 import Contact from 'src/components/Contact';
 import Home from 'src/components/Home';
+import Video from 'src/components/Video';
 import Footer from 'src/components/Footer';
 // Données
 // Styles et assets
@@ -41,6 +42,9 @@ const App = () => {
         </Route>
         <Route exact path="/contact">
           <Contact />
+        </Route>
+        <Route exact path="/videos">
+          <Video />
         </Route>
       </Switch>
       <Footer />
