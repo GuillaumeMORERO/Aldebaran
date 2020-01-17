@@ -96,7 +96,7 @@ export default () => {
         <textarea
           className="contact-zone_elm-area"
           name="message"
-          placeholder="Ecrivez votre message - 200 caractères max"
+          placeholder="Ecrivez votre message - 500 caractères max"
           rows="10"
           value={messageValue}
           onChange={(e) => handleChange(e, 'message')}
