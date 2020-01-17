@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Alert } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,6 +25,8 @@ export default () => {
 
   const [isEmailOk, setIsEmailOk] = useState(false);
   const [isMessageOk, setIsMessageOk] = useState(false);
+  const [mailErr, setMailErr] = useState('');
+  const [messageErr, setMessageErr] = useState('');
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
@@ -32,14 +34,17 @@ export default () => {
       const mailToCheck = e.target.value;
       dispatch(changeEmail(mailToCheck));
       const mailChecked = EmailValidator.validate(mailToCheck);
+      console.log( 'mail en vérification', mailChecked)
 
       if (mailChecked) {
         setIsEmailOk(true);
-        console.log( 'mail vérifié', mailChecked)
         console.log( 'isEmailOk', isEmailOk)
+        setMailErr('');
       } else {
         console.log( 'mail non vérifié', mailChecked)
         // mettre un message d'erreur
+        setMailErr('Email non valide, te fous pas de ma gueule !!');
+        console.log(mailErr);
       }
     }
 
@@ -50,9 +55,11 @@ export default () => {
       if (messageToCheck.length > 500) {
         setIsMessageOk(false);
         console.log('troooop loooong!!')
+        setMessageErr('Message trop long, ferme ta gueule...');
       } else {
         setIsMessageOk(true);
         console.log('message ok');
+        setMessageErr('');
       }
     }
   };
@@ -91,6 +98,8 @@ export default () => {
         />
       </div>
 
+      {mailErr ? <Alert className="errors" variant="danger">{mailErr}</Alert> : ''}
+
       <div className="contact-zone_elm">
         <label className="contact-zone_elm-lab">Message</label>
         <textarea
@@ -103,6 +112,8 @@ export default () => {
           >
         </textarea>
       </div>
+
+      {messageErr ? <Alert className="errors" variant="danger">{messageErr}</Alert> : ''}
 
       <div className="contact-zone_elm">
         <button
