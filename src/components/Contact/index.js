@@ -27,6 +27,11 @@ export default () => {
   const [isMessageOk, setIsMessageOk] = useState(false);
   const [mailErr, setMailErr] = useState('');
   const [messageErr, setMessageErr] = useState('');
+  const [uncount, setUncount] = useState(500);
+
+  const remainingCharacter = (longueur) => {
+    return 500 - longueur;
+  }
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
@@ -34,31 +39,30 @@ export default () => {
       const mailToCheck = e.target.value;
       dispatch(changeEmail(mailToCheck));
       const mailChecked = EmailValidator.validate(mailToCheck);
-      console.log( 'mail en vérification', mailChecked)
 
       if (mailChecked) {
         setIsEmailOk(true);
-        console.log( 'isEmailOk', isEmailOk)
         setMailErr('');
       } else {
-        console.log( 'mail non vérifié', mailChecked)
-        // mettre un message d'erreur
         setMailErr('Email non valide, te fous pas de ma gueule !!');
-        console.log(mailErr);
       }
     }
 
     if (inputValue === 'message') {
       const messageToCheck = e.target.value;
+      const messageLength = messageToCheck.length;
       dispatch(changeMessage(messageToCheck));
-      console.log(messageToCheck);
-      if (messageToCheck.length > 500) {
+
+      let rest = remainingCharacter(messageLength);
+      console.log( 'dans le onChange', rest);
+      setUncount(rest);
+      console.log( 'uncount', uncount);
+
+      if (messageLength > 500) {
         setIsMessageOk(false);
-        console.log('troooop loooong!!')
         setMessageErr('Message trop long, ferme ta gueule...');
       } else {
         setIsMessageOk(true);
-        console.log('message ok');
         setMessageErr('');
       }
     }
@@ -112,6 +116,8 @@ export default () => {
           >
         </textarea>
       </div>
+
+      <Alert className="errors" variant="warning">Il vous reste {uncount} caractéres</Alert>
 
       {messageErr ? <Alert className="errors" variant="danger">{messageErr}</Alert> : ''}
 
