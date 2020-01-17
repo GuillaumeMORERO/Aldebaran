@@ -6,6 +6,8 @@ import YouTube from '@u-wave/react-youtube';
 
 import { Container } from 'react-bootstrap';
 
+import { displayModal } from 'src/store/Videos/actions';
+
 // import '~video-react/dist/video-react.css';
 // @import '~video-react/styles/scss/video-react';
 // import "node_modules/video-react/dist/video-react.css";
@@ -14,9 +16,11 @@ import './style.scss';
 export default () => {
 
   const dispatch = useDispatch();
+  const { showModalVideo, videoToShow } = useSelector(state => state.videos);
 
   const showModal = (input) => {
     console.log('ça va moder!!', input);
+    dispatch(displayModal(input));
   };
 
   return <Container className="video">
