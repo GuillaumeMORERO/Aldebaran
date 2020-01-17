@@ -28,6 +28,8 @@ export default () => {
   const [mailErr, setMailErr] = useState('');
   const [messageErr, setMessageErr] = useState('');
   const [uncount, setUncount] = useState(500);
+  const [validationMessage, setValidationMessage] = useState('');
+  const [validationMessageErr, setValidationMessageErr] = useState('');
 
   const remainingCharacter = (longueur) => {
     return 500 - longueur;
@@ -70,11 +72,14 @@ export default () => {
     e.preventDefault();
     if (isEmailOk && isMessageOk) {
       console.log('c\'est parti pour un concert !!');
+      setValidationMessage('Le message a bien été envoyé !')
       // dispatch(login()
       // login est une action !!
       //);
     } else {
       console.log('putain d\'échec...')
+      setValidationMessageErr('Veuillez saisir des champs valides !')
+
     }
   };
 
@@ -128,6 +133,9 @@ export default () => {
           Envoyez !
         </button>
       </div>
+
+      {validationMessage ? <Alert className="errors" variant="success">{validationMessage}</Alert> : ''}
+      {validationMessageErr ? <Alert className="errors" variant="danger">{validationMessageErr}</Alert> : ''}
 
     </Form>
   </Container>
