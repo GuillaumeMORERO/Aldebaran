@@ -124,15 +124,13 @@ export default () => {
 
       {messageErr ? <Alert className="errors" variant="danger">{messageErr}</Alert> : ''}
 
-      <div className="contact-zone_elm">
-        <button
-          className="contact-zone_elm-bouton"
-          type="button"
-          onClick={onSubmit}
-          >
-          Envoyez !
-        </button>
-      </div>
+      <button
+        className="bouton"
+        type="button"
+        onClick={onSubmit}
+        >
+        Envoyez !
+      </button>
 
       {validationMessage ? <Alert className="errors" variant="success">{validationMessage}</Alert> : ''}
       {validationMessageErr ? <Alert className="errors" variant="danger">{validationMessageErr}</Alert> : ''}

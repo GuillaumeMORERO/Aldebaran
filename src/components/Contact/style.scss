@@ -44,24 +44,28 @@
         border: 1px solid #ccc;
         box-shadow: 1px 1px 1px #999;
       }
-      &-bouton {
-        font-family: 'Metal Mania', cursive;
-        font-size: 1.5em;
-        color: white;
-        background-color: transparent;
-        border: none;
-        &:hover {
-          color: white;
-          transition: .3s;
-          transform: scale(1.1);
-        }
-        &:not(:hover) {
-          transition: .2s;
-        }
-        
-      }
     }
   }
+}
+
+.bouton {
+  width: 80%;
+  align-self: flex-end;
+  font-family: 'Metal Mania', cursive;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  color: white;
+  background-color: transparent;
+  border: none;
+  &:hover {
+    color: white;
+    transition: .3s;
+    transform: scale(1.1);
+  }
+  &:not(:hover) {
+    transition: .2s;
+  }
+  
 }
 
 .errors {
