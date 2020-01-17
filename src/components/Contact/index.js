@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Alert } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,6 +25,15 @@ export default () => {
 
   const [isEmailOk, setIsEmailOk] = useState(false);
   const [isMessageOk, setIsMessageOk] = useState(false);
+  const [mailErr, setMailErr] = useState('');
+  const [messageErr, setMessageErr] = useState('');
+  const [uncount, setUncount] = useState(500);
+  const [validationMessage, setValidationMessage] = useState('');
+  const [validationMessageErr, setValidationMessageErr] = useState('');
+
+  const remainingCharacter = (longueur) => {
+    return 500 - longueur;
+  }
 
   const handleChange = (e, inputValue) => {// Function that save input change in store
     if (inputValue === 'email') {
@@ -35,24 +44,26 @@ export default () => {
 
       if (mailChecked) {
         setIsEmailOk(true);
-        console.log( 'mail vérifié', mailChecked)
-        console.log( 'isEmailOk', isEmailOk)
+        setMailErr('');
       } else {
-        console.log( 'mail non vérifié', mailChecked)
-        // mettre un message d'erreur
+        setMailErr('Email non valide');
       }
     }
 
     if (inputValue === 'message') {
       const messageToCheck = e.target.value;
+      const messageLength = messageToCheck.length;
       dispatch(changeMessage(messageToCheck));
-      console.log(messageToCheck);
-      if (messageToCheck.length > 500) {
+
+      let rest = remainingCharacter(messageLength);
+      setUncount(rest);
+
+      if (messageLength > 500) {
         setIsMessageOk(false);
-        console.log('troooop loooong!!')
+        setMessageErr('Message trop long');
       } else {
         setIsMessageOk(true);
-        console.log('message ok');
+        setMessageErr('');
       }
     }
   };
@@ -61,11 +72,14 @@ export default () => {
     e.preventDefault();
     if (isEmailOk && isMessageOk) {
       console.log('c\'est parti pour un concert !!');
+      setValidationMessage('Le message a bien été envoyé !')
       // dispatch(login()
       // login est une action !!
       //);
     } else {
       console.log('putain d\'échec...')
+      setValidationMessageErr('Veuillez saisir des champs valides !')
+
     }
   };
 
@@ -91,6 +105,8 @@ export default () => {
         />
       </div>
 
+      {mailErr ? <Alert className="errors" variant="danger">{mailErr}</Alert> : ''}
+
       <div className="contact-zone_elm">
         <label className="contact-zone_elm-lab">Message</label>
         <textarea
@@ -104,15 +120,20 @@ export default () => {
         </textarea>
       </div>
 
-      <div className="contact-zone_elm">
-        <button
-          className="contact-zone_elm-bouton"
-          type="button"
-          onClick={onSubmit}
-          >
-          Envoyez !
-        </button>
-      </div>
+      <Alert className="errors" variant="warning">Il vous reste {uncount} caractéres</Alert>
+
+      {messageErr ? <Alert className="errors" variant="danger">{messageErr}</Alert> : ''}
+
+      <button
+        className="bouton"
+        type="button"
+        onClick={onSubmit}
+        >
+        Envoyez !
+      </button>
+
+      {validationMessage ? <Alert className="errors" variant="success">{validationMessage}</Alert> : ''}
+      {validationMessageErr ? <Alert className="errors" variant="danger">{validationMessageErr}</Alert> : ''}
 
     </Form>
   </Container>
