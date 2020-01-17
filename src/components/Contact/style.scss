@@ -80,5 +80,20 @@
 @media only screen and (max-width: 425px) {
   .contact {
     font-size: .8em;
+    &-zone {
+      &_elm {
+        flex-direction: column;
+        &-lab {
+          margin-bottom: 1em;
+        }
+
+      }
+    }
+  }
+  .errors {
+    align-self: center;
+  }
+  .bouton {
+    align-self: center;
   }
 }
