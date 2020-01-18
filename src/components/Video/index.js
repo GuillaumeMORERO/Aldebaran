@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
 import YouTube from '@u-wave/react-youtube';
 
-import { Container } from 'react-bootstrap';
+import { Container, Modal } from 'react-bootstrap';
 
 import { displayModal } from 'src/store/Videos/actions';
 
@@ -14,6 +14,11 @@ import { displayModal } from 'src/store/Videos/actions';
 import './style.scss';
 
 export default () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
   const { showModalVideo, videoToShow } = useSelector(state => state.videos);
@@ -36,16 +41,22 @@ export default () => {
       src="src/data/teaser.PNG"
       alt="Teaser"
       className="video-image"
-      onClick={() => showModal('teaser')}
+      onClick={handleShow}
     />
 
-    {/* <YouTube
-      className="video-player"
-      video="U_6Yv6-gH0E"
-      autoplay="false"
-        width="560"
-        height="315"
-    /> */}
+    <div>
+      <Modal show={show} onHide={handleClose} centered>
+        {/* <img
+          src="src/data/teaser.PNG"
+          alt="Teaser"
+        /> */}
+        <YouTube
+          className="customodal-box_player"
+          video="U_6Yv6-gH0E"
+          height="300"
+        />
+      </Modal>
+    </div>
 
   </Container>
 
