@@ -18,6 +18,7 @@ import Media from 'src/components/Media';
 import Contact from 'src/components/Contact';
 import Home from 'src/components/Home';
 import Video from 'src/components/Video';
+import Modal from 'src/components/Modal';
 import Footer from 'src/components/Footer';
 // Données
 // Styles et assets
@@ -33,6 +34,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/modal">
+          <Modal />
         </Route>
         <Route exact path="/concerts">
           <Concerts />

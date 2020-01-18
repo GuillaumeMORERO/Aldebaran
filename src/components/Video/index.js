@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
 import YouTube from '@u-wave/react-youtube';
 
-import { Container } from 'react-bootstrap';
+import { Container, Modal, Button } from 'react-bootstrap';
 
 import { displayModal } from 'src/store/Videos/actions';
 
@@ -15,19 +15,23 @@ import './style.scss';
 
 export default () => {
 
-  const dispatch = useDispatch();
-  const { showModalVideo, videoToShow } = useSelector(state => state.videos);
+  const [show, setShow] = useState(false);
 
-  const showModal = (input) => {
-    console.log('ça va moder!!', input);
-    dispatch(displayModal(input));
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const dispatch = useDispatch();
+
+  const showModal = () => {
+    console.log('ça va moder!!');
+    dispatch(displayModal());
   };
 
   return <Container className="video">
     <button
       type="button"
       className="video-title"
-      onClick={() => showModal('teaser')}
+      onClick={() => showModal()}
     >
       Teaser !!
     </button>
@@ -36,8 +40,29 @@ export default () => {
       src="src/data/teaser.PNG"
       alt="Teaser"
       className="video-image"
-      onClick={() => showModal('teaser')}
+      onClick={handleShow}
     />
+
+    <div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        closeButton
+        centered
+        bsPrefix="customodal"
+      >
+
+        <Modal.Body className="customodal-box">
+          blabla
+          {/* <YouTube
+            className="customodal-box_player"
+            video="U_6Yv6-gH0E"
+            autoplay='false'
+          /> */}
+        </Modal.Body>
+
+      </Modal>
+    </div>
 
     {/* <YouTube
       className="video-player"

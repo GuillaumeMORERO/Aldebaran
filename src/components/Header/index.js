@@ -14,6 +14,7 @@ export default () => {
     <Navbar expand="lg" variant="dark" bg="none" className="header-barre">
       <Navbar.Brand href="/contact" className="header-barre_lien">Contact</Navbar.Brand>
       <Navbar.Brand href="/concerts" className="header-barre_lien">Concerts</Navbar.Brand>
+      <Navbar.Brand href="/modal" className="header-barre_lien">Test 2 Modal</Navbar.Brand>
 
       <Dropdown className="header-barre_dp">
         <Dropdown.Toggle variant="none" id="dropdown-basic" className="header-barre_dp-tog">
